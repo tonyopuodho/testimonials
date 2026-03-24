@@ -64,3 +64,13 @@ prevButton.addEventListener('click', () => {
 
     loadTestimonial(current)
 })
+
+function displayingRadioBox(){
+   for (let i = 0; i < testimonials.length; i++) {
+    dotElement.innerHTML += `
+      <span class="dots"></span>
+    `
+   }
+}
+
+displayingRadioBox()
