@@ -51,6 +51,7 @@ nextButton.addEventListener('click',() => {
     }
 
     loadTestimonial(current)
+    activeBackground(current)
 })
 
 prevButton.addEventListener('click', () => {
@@ -63,14 +64,29 @@ prevButton.addEventListener('click', () => {
     }
 
     loadTestimonial(current)
+    activeBackground(current)
 })
 
 function displayingRadioBox(){
    for (let i = 0; i < testimonials.length; i++) {
     dotElement.innerHTML += `
-      <span class="dots"></span>
+      <span class="dots ${i === 0 ? 'active' : ''}" data-sets=${i}></span>
     `
    }
 }
 
 displayingRadioBox()
+
+function activeBackground(current){
+    document.querySelectorAll('.dots').forEach((items) => (items.classList.remove('active')))
+    document.querySelector(`.dots[data-sets="${current}"]`).classList.add('active')
+}
+
+dotElement.addEventListener('click', (event) => {
+    if (event.target.classList.contains("dots")){
+        const current = event.target.dataset.sets
+        loadTestimonial(current)
+        activeBackground(current)
+    }
+    
+})
