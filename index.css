@@ -52,6 +52,9 @@ button{
     height: 15px;
     background-color: gainsboro;
 }
+.dots.active{
+    background-color: black;
+}
 .testimonials{
     padding: 10px;
     color: gray;

@@ -27,3 +27,40 @@ const testimonials = [
         testimonial:"From check-in to check-out, everything was seamless. The location is perfect, the views are stunning, and the overall experience was unforgettable. Five-star service all the way!"
     },
 ]
+
+let current = 0
+
+//display testimonials
+function loadTestimonial(current){
+    const name = testimonials[current].name
+    const test = testimonials[current].testimonial
+    testimonialElement.innerHTML = ` 
+      <h2>${name}</h2>
+      <p>${test}</p>
+    `
+}
+
+loadTestimonial(current)
+
+nextButton.addEventListener('click',() => {
+    if (0 < testimonials.length - 1) {
+        current += 1
+    }
+    if (current === testimonials.length) {
+        current = 0
+    }
+
+    loadTestimonial(current)
+})
+
+prevButton.addEventListener('click', () => {
+    if (current < testimonials.length) {
+        current -= 1
+    } 
+    
+    if (current < 0) {
+        current = testimonials.length - 1
+    }
+
+    loadTestimonial(current)
+})
